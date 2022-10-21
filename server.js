@@ -1,29 +1,20 @@
+
 const express = require("express");
-const multer = require("multer");
-var app = express()
-const body_parser = require("body-parser");
-const path = require("path");
-const hbs = require("hbs");
-const auth = require("./routers/auth");
-const student_router = require("./routers/router")
-app.set("view engine", "hbs");
-app.set('views', "./views");
-app.use(body_parser.json())
-
-app.use(express.static('uploads'));
-
+const app = express();
+const helmet = require("helmet");
+const student_router = require("./routers/router");
+app.use(express.urlencoded({extended:false}));
+const cors = require("cors");
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
-app.use("/",auth);
+
+app.use(cors());
+app.use(helmet());
+
+app.use((err,req,res,next)=>{
+    next(createError(404))
+})
+
 app.use("/",student_router);
-app.use(body_parser.urlencoded({
-    extended: true
-}));
-
-var Student = require("./models/student");
-require("./config/db");
-
-
-app.listen(8000, () => {
-    console.log(`server listening on 8000`);
+app.listen(8000,()=>{
+    console.log(`listen on 8000`)
 })
