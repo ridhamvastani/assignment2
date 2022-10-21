@@ -1,29 +1,25 @@
-<html>
-   <head>
-      <title>File Uploading Form</title>
-   </head>
-
-   <body>
-      <h3>File Upload:</h3>
-      Select a file to upload: <br />
-      
-      <form action = "/file_upload" method = "POST" 
-         enctype = "multipart/form-data">
-        <input type="file" name="myfile" size="500" />
-         <br />
-         <input type = "submit" value = "Upload File" />
-      </form>
-     <br><br>
-     <h3>File Upload:</h3>
-     Select multiple files to upload: <br />
-     
-     <form action = "/photos_upload" method = "POST" 
-        enctype = "multipart/form-data">
-        <input type="file" name="photos" size="500" multiple="multiple" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <body>
+    <br><br>
+    <center>
+      <form action="/validate" method="post" style="font-size:x-large;">
+        Username
+        <input type="text" name="username" />
         <br />
-        <input type = "submit" value = "Upload File" />
-     </form>
-
-      
-   </body>
+        <br />
+        Password
+        <input type="password" name="password" />
+        <br />
+        <br />
+        <input type="submit"  value="Login" name="login" />
+      </form>
+    </center>
+  </body>
 </html>
